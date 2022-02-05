@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="description"
+            content="Coffee Time : Get Latest News Online using this simple application. You can get Real time News."
+        />
+        <meta
+            name="keywords"
+            content="Krishnaprasanth DSK,krishnaprasanth,krishnaprasanth dsk, DSK,BeastyDSK,dsk-news-app,newsio,dsk-news-app heroku, herokuapp,krishnaprasanth D V"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ title }}</title>
+        <link
+            rel="icon"
+            href="{{ url_for('static',filename='img/icon.png') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static',filename='css/style.css') }}"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="header flex-cont-vh fixed">
+            <h1 class="logo-text">Coffee Time</h1>
+        </header>
+        <main class="main-container">
+            <section>
+                <form class="search flex-cont-vh">
+                    <input
+                        required
+                        id="searchItem"
+                        type="text"
+                        placeholder="News Topic..."
+                    />
+                    <input id="searchBtn" type="submit" value="Search" />
+                </form>
+            </section>
+            <section class="news-cards">
+                {% for article in articles %}
+                <article class="news-card">
+                    <div class="heading">
+                        <img
+                            class="heading-img"
+                            src="{{ article['image']['thumbnail']['contentUrl'] }}&w=1280&960&p=0"
+                            alt="{{ article['name'] }}"
+                        />
+                        <h1 class="heading-text">{{ article['name'] }}</h1>
+                    </div>
+                    <div class="content flex-cont-vh">
+                        <p class="content-date">
+                            Date : {{ article['datePublished'] }}
+                        </p>
+                        <p class="content-description">
+                            {{ article['description'] }}
+                        </p>
+                        <a
+                            href="{{ article['url'] }}"
+                            target="_blank"
+                            class="readmore"
+                            rel="noreferrer"
+                            >Read More</a
+                        >
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer-text">
+                Created By <strong class="author">Krishnaprasanth</strong>
+            </p>
+        </footer>
+        <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+    </body>
+</html>
