@@ -1,9 +1,7 @@
 from sqlite3 import Date
-from flask import Flask,render_template
+from flask import render_template
 from application.newsApi import getNewsData
-
-
-app = Flask(__name__)
+from application import app
 
 
 def modifyData(articles):
