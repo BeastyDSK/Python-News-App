@@ -132,6 +132,7 @@ input[type="submit"]:hover {
 }
 
 .content-description {
+    flex:1 0 236px;
     padding: 1.6rem;
     line-height: 1.6;
     text-indent: 40px;
